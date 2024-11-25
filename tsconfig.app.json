@@ -20,7 +20,23 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Aliases */
+    "baseUrl": ".",
+    "paths": {
+      /* Application Root */
+      "@*": ["src/features/*", "src/*"],
+      /* Root alias */
+      "/*": ["./*"]
+    }
   },
-  "include": ["src"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.json",
+    "src/types/**/*.d.ts",
+    "globals.d.ts"
+, "src/vite-env.d.ts"  ],
+  "exclude": ["node_modules", "dist"],
 }
