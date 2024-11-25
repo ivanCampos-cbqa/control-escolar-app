@@ -4,7 +4,6 @@ import { colors } from "@constants";
 
 export const Container = styled.div`
   width: 70%;
-  margin: 0 auto;
   margin-top: 10%;
   padding: 20px;
   background-color: ${colors.lighterBlue};
