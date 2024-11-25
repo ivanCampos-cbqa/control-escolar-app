@@ -6,6 +6,7 @@ import Authenticate from "@components/guards/Authenticate";
 import { WithSuspense } from "@components/common";
 import AuthLayout from "@components/layout/AuthLayout/AuthLayout";
 import { ROLES_USUARIO } from "@interfaces";
+import MateriasPage from "@pages/MateriasPage";
 
 const { LoginPage, HomePage } = LazyComponents;
 
@@ -33,7 +34,7 @@ const adminRoutes: RouteObject[] = [
   },
   {
     path: MATERIAS_PATH,
-    element: <div>Materias</div>,
+    element: <MateriasPage/>,
     errorElement: <ErrorBoundaryPage/>
   }
 ]
