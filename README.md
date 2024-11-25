@@ -1,50 +1,38 @@
-# React + TypeScript + Vite
+# 📚 **Sistema de Control Escolar** 🎓
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un sistema de control escolar desarrollado con **React**. Permite gestionar la información de estudiantes, materias y calificaciones de manera sencilla y eficiente.
 
-Currently, two official plugins are available:
+## 🌟 Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **🔑 Login**: Acceso seguro al sistema, Módulo de Autenticación y protección de rutas.
+2. **👨‍🎓 CRUD de Alumnos**: Crear, leer, actualizar y eliminar los registros de los estudiantes.
+3. **📚 CRUD de Materias**: Administrar las materias disponibles (crear, leer, actualizar, eliminar).
+4. **📝 Inscripción de Alumnos a Materias**: Inscribir a los estudiantes en las materias de su elección.
+5. **📊 Captura de Calificaciones**: Registrar y actualizar las calificaciones de los estudiantes.
 
-## Expanding the ESLint configuration
+## 👨‍💻 **Desarrolladores**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Este proyecto fue desarrollado por:
 
-- Configure the top-level `parserOptions` property like this:
+- **Saul Iván Campos Solís**
+- **Diego Alejandro Juárez Maldonado**
+- **Marcos Uriel Resendiz Medina**
+- **María Cecilia Peña Bravo** (Desarrolladora)
+- **Valeria Baeza Morales** (Desarrolladora)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🛠️ **Instalación**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Para instalar y ejecutar el proyecto, sigue estos pasos:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Clona el repositorio:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```bash
+   git clone https://github.com/ivanCampos-cbqa/contol-escolar-app
+
+2. Instala las dependencias
+   ```bash
+   npm install
+
+3. Ejecuta el proyecto
+   ```bash
+   npm run dev
