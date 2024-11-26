@@ -153,8 +153,8 @@ export default function Alumnos() {
         <ul style={{ listStyle: 'none' }}>
           {alumnos.length > 0 ? (
             alumnos.map((alumno) => (
-              <div style={{ backgroundColor: '#e0e0e0', margin: '15px 5px', padding: '5px 30px', borderRadius: '12px', }} onClick={() => handleSeleccionarAlumno(alumno)}>
-                <li key={alumno.id} >
+              <div key={alumno.id}  style={{ backgroundColor: '#e0e0e0', margin: '15px 5px', padding: '5px 30px', borderRadius: '12px', }} onClick={() => handleSeleccionarAlumno(alumno)}>
+                <li >
                   {alumno.nombre} {alumno.apellidos} - Matrícula: {alumno.matricula}
                 </li>
               </div>
