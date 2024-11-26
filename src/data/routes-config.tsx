@@ -7,6 +7,7 @@ import { WithSuspense } from "@components/common";
 import AuthLayout from "@components/layout/AuthLayout/AuthLayout";
 import { ROLES_USUARIO } from "@interfaces";
 import MateriasPage from "@pages/MateriasPage";
+import Alumnos from "@pages/AlumnosPage";
 
 const { LoginPage, HomePage } = LazyComponents;
 
@@ -29,7 +30,7 @@ const loggedInRoutes: RouteObject[] = [
 const adminRoutes: RouteObject[] = [
   {
     path: ALUMNOS_PATH,
-    element: <div>Alumnos</div>,
+    element: <Alumnos/>,
     errorElement: <ErrorBoundaryPage/>
   },
   {
