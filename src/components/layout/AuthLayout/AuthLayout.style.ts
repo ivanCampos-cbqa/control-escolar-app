@@ -7,7 +7,7 @@ export const AuthLayoutWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: ${colors.offWhite};
+  background-color: ${colors.white};
 `;
 
 export const NavBar = styled.nav`

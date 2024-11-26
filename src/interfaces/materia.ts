@@ -4,3 +4,9 @@ export interface Materia {
   codigoMateria: string;
   nombreProfesor: string;
 }
+
+export interface MateriaCreateFormFields {
+  nombre: string;
+  codigoMateria: string;
+  nombreProfesor: string;
+}
