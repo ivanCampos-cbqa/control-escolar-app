@@ -150,12 +150,6 @@ export default function Alumnos() {
           />
         </>
       )}
-        <CustomButton
-          title="Eliminar"
-          onClick={handleEliminarAlumno}
-          style={{ backgroundColor: "#eb2f4e" }}
-        />
-      
 
       <div
         style={{
