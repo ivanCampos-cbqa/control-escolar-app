@@ -25,7 +25,7 @@ interface CustomInputProps {
   fontSize?: string;
   maxLength?: number;
   value?:string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>)=>void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>)=>void;
 }
 
 export default function CustomInput({
