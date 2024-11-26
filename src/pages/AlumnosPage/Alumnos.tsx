@@ -131,7 +131,11 @@ export default function Alumnos() {
       </DivInputs>
 
 
-      <CustomButton title={alumnoSeleccionado ? "Editar Alumno" : "Registrar Alumno"} onClick={handleRegistrarOEditarAlumno} style={alumnoSeleccionado ? { backgroundColor: '#2f8aeb' } : {}}></CustomButton>
+      <CustomButton
+        title={alumnoSeleccionado ? "Editar Alumno" : "Registrar Alumno"}
+        onClick={handleRegistrarOEditarAlumno}
+        style={alumnoSeleccionado ? { backgroundColor: "#1E8E3E" } : {}}
+      ></CustomButton>
             {alumnoSeleccionado && (
         <>
           <CustomButton
