@@ -24,6 +24,8 @@ interface CustomInputProps {
   hasValue?: boolean;
   fontSize?: string;
   maxLength?: number;
+  value?:string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>)=>void;
 }
 
 export default function CustomInput({
@@ -37,6 +39,8 @@ export default function CustomInput({
   hasValue,
   fontSize,
   maxLength,
+  value,
+  onChange,
 }: CustomInputProps) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -86,6 +90,8 @@ export default function CustomInput({
             <Input
               placeholder={placeholder}
               type={showPassword && type === 'password' ? 'text' : type}
+              value={value}
+              onChange={onChange}
               disabled={disabled}
               role="textbox"
               onKeyUp={handleKeyPress}
