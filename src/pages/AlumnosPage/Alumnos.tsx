@@ -132,7 +132,20 @@ export default function Alumnos() {
 
 
       <CustomButton title={alumnoSeleccionado ? "Editar Alumno" : "Registrar Alumno"} onClick={handleRegistrarOEditarAlumno} style={alumnoSeleccionado ? { backgroundColor: '#2f8aeb' } : {}}></CustomButton>
-      {alumnoSeleccionado && (
+            {alumnoSeleccionado && (
+        <>
+          <CustomButton
+            title="Eliminar"
+            onClick={handleEliminarAlumno}
+            style={{ backgroundColor: "#eb2f4e" }}
+          />
+          <CustomButton
+            title="Cancelar"
+            onClick={() => limpiarFormulario()}
+            style={{ backgroundColor: "#2f8aeb" }}
+          />
+        </>
+      )}
         <CustomButton
           title="Eliminar"
           onClick={handleEliminarAlumno}
