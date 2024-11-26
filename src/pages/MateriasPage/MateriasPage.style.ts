@@ -3,9 +3,9 @@ import { colors } from "@constants";
 
 
 export const Container = styled.div`
-  max-width: 800px;
+  width: 70%;
   margin: 0 auto;
-  margin-top: 14%;
+  margin-top: 10%;
   padding: 20px;
   background-color: ${colors.lighterBlue};
   border-radius: 10px;

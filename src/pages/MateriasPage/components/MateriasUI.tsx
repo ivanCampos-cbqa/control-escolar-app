@@ -6,21 +6,28 @@ import {
   List,
   ListItem
 } from "../MateriasPage.style";
-import { Label,Input} from "@components/common/CustomInput/CustomInput.styles"
-import {Button} from "@components/common/CustomButton/CustomButton.style"
+import { Label,Input } from "@components/common/CustomInput/CustomInput.styles"
+import { CustomInput } from "@components/common"
+import { Button } from "@components/common/CustomButton/CustomButton.style"
 import { useSubjectsStore } from "@store/useSubjectsStore";
 import { Materia } from "@interfaces/materia";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { MateriaCreateFormFields } from "@interfaces";
+import { materiaaCreateFormValidationSchema } from "../hooks/useCreateFormValidationSchema";
 
 const MateriasUI = () => {
-  const [newMateria, setNewMateria] = useState<Materia>({
-    id: 0,
-    nombre: "",
-    codigoMateria: "",
-    nombreProfesor: "",
-  });
 
   const [materiasList, setMateriasList] = useState<Materia[]>([]);
   const [isEditing, setIsEditing] = useState<number | null>(null);
+
+  const {
+    register,
+    formState: { errors, defaultValues },
+    handleSubmit,
+    reset
+  } = useForm<MateriaCreateFormFields>();
+
+  const [formErrorMessage, setFormErrorMessage] = useState<string>("");
 
   const {
     callCrearMateriaApi,
@@ -34,10 +41,14 @@ const MateriasUI = () => {
     setMateriasList(materias);
   };
 
-  const handleCreate = () => {
+  const onCreateFormSubmit: SubmitHandler<MateriaCreateFormFields> = (formContent: MateriaCreateFormFields
+  ): void => handleCreate(formContent.nombre, formContent.codigoMateria, formContent.nombreProfesor);
+
+  const handleCreate = (nombre: string, codigoMateria: string, nombreProfesor: string) => {
+    const newMateria={id:0,nombre:nombre,codigoMateria:codigoMateria,nombreProfesor:nombreProfesor}
     callCrearMateriaApi(newMateria);
-    setNewMateria({ id: 0, nombre: "", codigoMateria: "", nombreProfesor: "" });
     handleGetAll();
+    reset();
   };
 
   const handleDelete = (id: number) => {
@@ -71,22 +82,30 @@ const MateriasUI = () => {
       <Title>Administrar materias</Title>
       <Section>
         <Label>Crear Materia</Label>
-        <Input
+        <form onSubmit={handleSubmit(onCreateFormSubmit)}>
+        <CustomInput
           placeholder="Nombre"
-          value={newMateria.nombre}
-          onChange={(e) => setNewMateria({ ...newMateria, nombre: e.target.value })}
+          error={errors.nombre?.message}
+          register={register("nombre", {
+            ...materiaaCreateFormValidationSchema.nombre,
+          })}
         />
-        <Input
+        <CustomInput
           placeholder="Código Materia"
-          value={newMateria.codigoMateria}
-          onChange={(e) => setNewMateria({ ...newMateria, codigoMateria: e.target.value })}
+          error={errors.codigoMateria?.message}
+          register={register("codigoMateria", {
+            ...materiaaCreateFormValidationSchema.codigoMateria,
+          })}
         />
-        <Input
+        <CustomInput
           placeholder="Nombre Profesor"
-          value={newMateria.nombreProfesor}
-          onChange={(e) => setNewMateria({ ...newMateria, nombreProfesor: e.target.value })}
+          error={errors.nombreProfesor?.message}
+          register={register("nombreProfesor", {
+            ...materiaaCreateFormValidationSchema.nombreProfesor,
+          })}
         />
-        <Button onClick={handleCreate}>Crear</Button>
+        <Button>Crear</Button>
+        </form>
       </Section>
       <Section>
         <Label>Ver todas las materias</Label>

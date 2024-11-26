@@ -3,7 +3,7 @@ import { getFromLocalStorage, saveToLocalStorage } from "@utils/browserUtils";
 import { zustandCreate } from "./zustandStore";
 import { materiasMock } from "@mockData/subjects";
 
-export const materiasStorageKey = "MateriasState";
+export const materiasStorageKey = "materiasState";
 
 interface MateriasStore {
   callCrearMateriaApi: (Materia: Materia) => void;
@@ -30,7 +30,12 @@ export const useSubjectsStore = zustandCreate<MateriasStore>(() => {
 
     callCrearMateriaApi: (materia: Materia): void => {
       const materias = getFromLocalStorage<Materia[]>(materiasStorageKey) || [];
-      materia.id = materias[materias.length - 1].id+1;
+      if(materias.length > 0){
+        materia.id = materias[materias.length - 1].id+1;
+      }
+      else{
+        materia.id = 1;
+      }
       const nuevasMaterias = [...materias, materia];
       saveToLocalStorage(materiasStorageKey, nuevasMaterias);
       alert(`Materia ${materia.nombre} creada con éxito`);
