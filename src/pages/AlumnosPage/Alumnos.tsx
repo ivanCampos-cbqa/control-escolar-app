@@ -155,7 +155,7 @@ export default function Alumnos() {
           onClick={handleEliminarAlumno}
           style={{ backgroundColor: "#eb2f4e" }}
         />
-      )}
+      
 
       <div
         style={{
