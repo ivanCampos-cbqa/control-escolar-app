@@ -1,8 +1,8 @@
 import { ERROR_MESSAGES } from "@constants";
-import { ValidationSchema, MateriaCreateFormFields } from "@interfaces";
+import { ValidationSchema, MateriaEditFormFields } from "@interfaces";
 import { stringRegex } from "@utils";
 
-export const materiaCreateFormValidationSchema: ValidationSchema<MateriaCreateFormFields> = {
+export const materiaEditFormValidationSchema: ValidationSchema<MateriaEditFormFields> = {
   nombre: {
     required: ERROR_MESSAGES.REQUIRED_FIELD,
   },

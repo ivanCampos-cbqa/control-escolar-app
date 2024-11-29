@@ -4,6 +4,8 @@ import { DivInputs } from "./Alumnos.style";
 import { useEffect, useState } from "react";
 import { useUsersStore } from "@store/useUsersStore";
 import { ROLES_USUARIO, Usuario } from "@interfaces";
+import { Button } from "@components/common/CustomButton/CustomButton.style";
+import { useNavigate } from "react-router-dom";
 
 export default function Alumnos() {
   const [alumnos, setAlumnos] = useState<Usuario[]>([]);
@@ -18,6 +20,8 @@ export default function Alumnos() {
   const callGetAlumnosApi = useUsersStore((state) => state.callGetAlumnosApi);
   const callEditarAlumnoApi = useUsersStore((state) => state.callEditarAlumnoApi);
   const callEliminarAlumnoApi = useUsersStore((state)=> state.callEliminarAlumnoApi);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchedAlumnos = callGetAlumnosApi();
@@ -102,6 +106,10 @@ export default function Alumnos() {
     }
   };
 
+  const handleNavigateCalificaciones = (id:number) =>{
+    navigate(`/alumno/${id}`)
+  };
+
   const handleEliminarAlumno = () => {
     if (!alumnoSeleccionado) {
       alert('No hay alumno seleccionado para eliminar');
@@ -164,10 +172,11 @@ export default function Alumnos() {
         <ul style={{ listStyle: 'none' }}>
           {alumnos.length > 0 ? (
             alumnos.map((alumno) => (
-              <div key={alumno.id}  style={{ backgroundColor: '#e0e0e0', margin: '15px 5px', padding: '5px 30px', borderRadius: '12px', }} onClick={() => handleSeleccionarAlumno(alumno)}>
-                <li >
+              <div key={alumno.id}  style={{ backgroundColor: '#e0e0e0', margin: '15px 5px', padding: '5px 30px', borderRadius: '12px', display:"flex", justifyContent:"space-between", alignItems:"center" }} onClick={() => handleSeleccionarAlumno(alumno)}>
+                <li>
                   {alumno.nombre} {alumno.apellidos} - Matrícula: {alumno.matricula}
                 </li>
+                <Button style={{width: 'fit-content'}} onClick={()=>handleNavigateCalificaciones(alumno.id)}>Ver Calificaciones</Button>
               </div>
             ))
           ) : (

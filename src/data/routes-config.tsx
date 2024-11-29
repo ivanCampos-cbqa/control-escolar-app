@@ -1,5 +1,5 @@
 import { RouteObject } from "react-router-dom";
-import { ALUMNOS_PATH, CALIFICACIONES_PATH, HOME_PATH, LOGIN_PATH, MATERIAS_PATH } from "./paths";
+import { ALUMNOS_PATH, CALIFICACIONES_PATH, DETALLE_ALUMNO_PATH, HOME_PATH, LOGIN_PATH, MATERIAS_PATH } from "./paths";
 import { LazyComponents } from "./lazy-components";
 import ErrorBoundaryPage from "@pages/ErrorBoundaryPage";
 import Authenticate from "@components/guards/Authenticate";
@@ -9,7 +9,7 @@ import { ROLES_USUARIO } from "@interfaces";
 import MateriasPage from "@pages/MateriasPage";
 import Alumnos from "@pages/AlumnosPage";
 
-const { LoginPage, HomePage } = LazyComponents;
+const { LoginPage, HomePage, DetalleAlumnoPage } = LazyComponents;
 
 const loggedOutRoutes: RouteObject[] = [
   {
@@ -36,6 +36,11 @@ const adminRoutes: RouteObject[] = [
   {
     path: MATERIAS_PATH,
     element: <MateriasPage/>,
+    errorElement: <ErrorBoundaryPage/>
+  },
+  {
+    path: DETALLE_ALUMNO_PATH,
+    element: <DetalleAlumnoPage/>,
     errorElement: <ErrorBoundaryPage/>
   }
 ]

@@ -5,4 +5,5 @@ export const ERROR_MESSAGES = {
   INVALID_PASSWORD: 'Min. 8 characters, includes lowercase, uppercase, number, and symbol (!@#$%^&*.).',
   INVALID_STRING_FORMAT: 'Este campo no debe tener números o símobolos.',
   INVALID_WHITESPACES: 'El texto no puede contener espacios vacíos.',
+  INVALID_CALIFICACIÓN: 'La calificación no es valida.',
 };

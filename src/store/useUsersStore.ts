@@ -37,7 +37,8 @@ export const useUsersStore = zustandCreate<UsuariosStore>(() => {
 
     callCrearAlumnoApi: (usuario: Usuario): void => {
       const usuarios = getFromLocalStorage<Usuario[]>(usuariosStorageKey) || [];
-      const nuevosUsuarios = [...usuarios, usuario];
+      const newId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) + 1 : 1;
+      const nuevosUsuarios = [...usuarios, { ...usuario, id: newId }];
       saveToLocalStorage(usuariosStorageKey, nuevosUsuarios);
     },
 

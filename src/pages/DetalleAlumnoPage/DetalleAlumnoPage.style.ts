@@ -4,6 +4,7 @@ import { colors } from "@constants";
 
 export const Container = styled.div`
   width: 70%;
+  margin: 0 auto;
   margin-top: 10%;
   padding: 20px;
   background-color: ${colors.lighterBlue};
@@ -52,4 +53,35 @@ export const ListItem = styled.li`
     color: ${colors.midGray};
     font-size: 0.9rem;
   }
+`;
+
+export const ListCalificacionItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const DetalleCalificacionItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const SearchBar = styled.input`
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+`;
+
+export const MateriaItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-bottom: 10px;
 `;
