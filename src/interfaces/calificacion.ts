@@ -5,3 +5,8 @@ export interface CalificacionMateria {
   materia: Materia;
   calificacion: number;
 }
+
+export interface CalificacionEditFormFields {
+  id:number;
+  calificacion: number;
+}

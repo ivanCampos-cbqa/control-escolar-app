@@ -13,4 +13,6 @@ export const getUserFullName = (
 
 export const matriculaRegex = /^[a-zA-Z0-9]{5,10}$/;
 
+export const onlyNumbersRegex = /^[0-9]+$/;
+
 export const isBlankString = (value: string): boolean => value.trim() === '';

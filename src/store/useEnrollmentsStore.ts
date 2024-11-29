@@ -15,30 +15,46 @@ export const useEnrollmentsStore = zustandCreate<EnrollmentsStore>(() => {
     callInscribirAlumnoApi: (usuario: Usuario, materia: Materia): void => {
       const alumnos = getFromLocalStorage<Usuario[]>(usuariosStorageKey) || [];
       alumnos.filter((usuario) => usuario.rol === ROLES_USUARIO.ALUMNO);
-      if(alumnos.some(alumno => { return alumno == usuario })){
+      if(alumnos.some((alumno) => alumno.id === usuario.id )){
         var nuevaInscripcion = {id:0,materia:materia,calificacion:0}
-        if(usuario.materias !== undefined && usuario.materias?.length>0){
-          nuevaInscripcion.id = usuario.materias[usuario.materias.length - 1].id+1;
+        if(usuario.materias!== undefined && usuario.materias.length > 0 ){
+          const isAlreadyAssigned = usuario.materias?.some(
+            (inscripcion) => inscripcion.materia.id === materia.id
+          );
+          if (isAlreadyAssigned) {
+            alert(`La materia "${materia.nombre}" ya está asignada a ${usuario.nombre}.`);
+            return;
+          }
+          else{
+            nuevaInscripcion.id = usuario.materias[usuario.materias.length - 1].id+1;
+          }
         }
         else{
-          nuevaInscripcion.id = 1;
+          if(usuario.materias!==undefined){
+            nuevaInscripcion.id = 1;
+          }
+          else{
+            alert("El usuario no es alumno")
+            return;
+          }
         }
         usuario.materias?.push(nuevaInscripcion)
         const usuariosActualizados = alumnos.map((usuarioExistente) =>
           usuarioExistente.id === usuario.id ? { ...usuarioExistente, ...usuario } : usuarioExistente
         );
         saveToLocalStorage(usuariosStorageKey, usuariosActualizados);
-        alert("Inscripción realizada correctamente");
+        alert(`Materia "${materia.nombre}" asignada a ${usuario.nombre} correctamente.`);
       }
       else{
         alert("El usuario no es un alumno");
+        return;
       }
     },
 
     callEliminarInscripcionAlumnoApi: (usuario: Usuario, materia: Materia): void => {
       const alumnos = getFromLocalStorage<Usuario[]>(usuariosStorageKey) || [];
       alumnos.filter((usuario) => usuario.rol === ROLES_USUARIO.ALUMNO);
-      if(alumnos.some(alumno => { return alumno == usuario })){
+      if(alumnos.some((alumno) => alumno.id === usuario.id )){
         if(usuario.materias !== undefined && usuario.materias?.length>0){
           const inscripcion = usuario.materias.find((m) => m.materia == materia)
           if(inscripcion !== undefined){

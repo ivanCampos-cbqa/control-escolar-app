@@ -1,7 +1,5 @@
 import { HTMLInputTypeAttribute, useState, KeyboardEvent } from 'react';
-
 import { UseFormRegisterReturn } from 'react-hook-form';
-
 import {
   Container,
   Input,
@@ -24,8 +22,9 @@ interface CustomInputProps {
   hasValue?: boolean;
   fontSize?: string;
   maxLength?: number;
-  value?:string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>)=>void;
+  value?: string;
+  defaultValue?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function CustomInput({
@@ -40,6 +39,7 @@ export default function CustomInput({
   fontSize,
   maxLength,
   value,
+  defaultValue,
   onChange,
 }: CustomInputProps) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -72,6 +72,12 @@ export default function CustomInput({
     }
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (onChange && event.target instanceof HTMLInputElement) {
+      onChange(event as React.ChangeEvent<HTMLInputElement>);
+    }
+  };
+
   return (
     <Container>
       <Label className={className} $fontSize={fontSize}>
@@ -82,6 +88,9 @@ export default function CustomInput({
               placeholder={placeholder}
               disabled={disabled}
               role="textbox"
+              value={value}
+              defaultValue={defaultValue}
+              onChange={handleChange}
               {...register}
               $hasValue={hasValue}
               maxLength={maxLength}
@@ -91,6 +100,7 @@ export default function CustomInput({
               placeholder={placeholder}
               type={showPassword && type === 'password' ? 'text' : type}
               value={value}
+              defaultValue={defaultValue}
               onChange={onChange}
               disabled={disabled}
               role="textbox"

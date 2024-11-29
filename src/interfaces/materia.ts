@@ -10,3 +10,10 @@ export interface MateriaCreateFormFields {
   codigoMateria: string;
   nombreProfesor: string;
 }
+
+export interface MateriaEditFormFields {
+  id:number;
+  nombre: string;
+  codigoMateria: string;
+  nombreProfesor: string;
+}
