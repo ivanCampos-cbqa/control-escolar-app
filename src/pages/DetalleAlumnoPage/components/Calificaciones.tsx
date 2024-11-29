@@ -185,10 +185,10 @@ const Calificaciones = ({ id, onRefresh, refreshFlag }: { id: number; onRefresh:
     </Container>
   );}
   else{
-    return <h3>El alumno no está inscrito a ninguna materia</h3>;
+    return <Container> <Title>Calificaciones</Title><h4>El alumno no está inscrito a ninguna materia</h4></Container>;
   }
 }else{
-  return <h3>No se encontró al alumno</h3>;
+  return <Container> <Title>Calificaciones</Title><h4>No se encontró al alumno</h4></Container>;
 }
 };
 
