@@ -10,15 +10,15 @@ Este es un sistema de control escolar desarrollado con **React**. Permite gestio
 4. **📝 Inscripción de Alumnos a Materias**: Inscribir a los estudiantes en las materias de su elección.
 5. **📊 Captura de Calificaciones**: Registrar y actualizar las calificaciones de los estudiantes.
 
-## 👨‍💻 **Desarrolladores**
+## 👨‍💻 **Equipo de trabajo**
 
 Este proyecto fue desarrollado por:
 
-- **Saul Iván Campos Solís**
-- **Diego Alejandro Juárez Maldonado**
-- **Marcos Uriel Resendiz Medina**
-- **María Cecilia Peña Bravo** (Desarrolladora)
-- **Valeria Baeza Morales** (Desarrolladora)
+- **Saul Iván Campos Solís - desarrollador y tester**
+- **Diego Alejandro Juárez Maldonado - desarrollador**
+- **Marcos Uriel Resendiz Medina - mockups y wireframes**
+- **María Cecilia Peña Bravo - documentación y JIRA**
+- **Valeria Baeza Morales - desarrolladora**
 
 ## 🛠️ **Instalación**
 
