@@ -26,6 +26,8 @@ export default function LoginPage() {
     if (!user) {
       setFormErrorMessage("Credenciales invalidas");
       return;
+    }else{
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
     }
 
     updateAuthState({user});

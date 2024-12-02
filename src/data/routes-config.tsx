@@ -8,6 +8,7 @@ import AuthLayout from "@components/layout/AuthLayout/AuthLayout";
 import { ROLES_USUARIO } from "@interfaces";
 import MateriasPage from "@pages/MateriasPage";
 import Alumnos from "@pages/AlumnosPage";
+import Calificaciones from "@pages/Calificaciones";
 
 const { LoginPage, HomePage, DetalleAlumnoPage } = LazyComponents;
 
@@ -48,7 +49,7 @@ const adminRoutes: RouteObject[] = [
 const alumnoRoutes: RouteObject[] = [
   {
     path: CALIFICACIONES_PATH,
-    element: <div>Calificaciones</div>,
+    element: <Calificaciones/>,
     errorElement: <ErrorBoundaryPage/>
   }
 ]
