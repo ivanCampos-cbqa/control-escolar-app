@@ -130,8 +130,8 @@ export default function Alumnos() {
   }
 
   return (
-    <div>
-      <h3>Lista de alumnos</h3>
+    <div style={{textAlign:"center"}}>
+      <h3 style={{fontWeight:"normal"}}>Administrar Alumnos</h3>
       <DivInputs>
         <CustomInput label="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)}></CustomInput>
         <CustomInput label="Apellido" value={apellido} onChange={(e) => setApellido(e.target.value)}></CustomInput>
@@ -142,19 +142,19 @@ export default function Alumnos() {
       <CustomButton
         title={alumnoSeleccionado ? "Editar Alumno" : "Registrar Alumno"}
         onClick={handleRegistrarOEditarAlumno}
-        style={alumnoSeleccionado ? { backgroundColor: "#1E8E3E" } : {}}
+        style={{ backgroundColor: "#92212D" }}
       ></CustomButton>
             {alumnoSeleccionado && (
         <>
           <CustomButton
             title="Eliminar"
             onClick={handleEliminarAlumno}
-            style={{ backgroundColor: "#eb2f4e" }}
+            style={{ backgroundColor: "#92212D" }}
           />
           <CustomButton
             title="Cancelar"
             onClick={() => limpiarFormulario()}
-            style={{ backgroundColor: "#2f8aeb" }}
+            style={{ backgroundColor: "#92212D" }}
           />
         </>
       )}
@@ -167,13 +167,15 @@ export default function Alumnos() {
           borderRadius: '8px', 
           padding: '10px',
           marginTop: '20px',
+          backgroundColor:"#042160",
+          paddingRight:"60px"
         }}
       >
         <ul style={{ listStyle: 'none' }}>
           {alumnos.length > 0 ? (
             alumnos.map((alumno) => (
-              <div key={alumno.id}  style={{ backgroundColor: '#e0e0e0', margin: '15px 5px', padding: '5px 30px', borderRadius: '12px', display:"flex", justifyContent:"space-between", alignItems:"center" }} onClick={() => handleSeleccionarAlumno(alumno)}>
-                <li>
+              <div key={alumno.id}  style={{ backgroundColor: 'white', margin: '15px 5px', padding: '5px 30px', borderRadius: '12px', }} onClick={() => handleSeleccionarAlumno(alumno)}>
+                <li >
                   {alumno.nombre} {alumno.apellidos} - Matrícula: {alumno.matricula}
                 </li>
                 <Button style={{width: 'fit-content'}} onClick={()=>handleNavigateCalificaciones(alumno.id)}>Ver Calificaciones</Button>

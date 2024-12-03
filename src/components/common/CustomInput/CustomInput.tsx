@@ -41,6 +41,7 @@ export default function CustomInput({
   value,
   defaultValue,
   onChange,
+  color,
 }: CustomInputProps) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -80,9 +81,9 @@ export default function CustomInput({
 
   return (
     <Container>
-      <Label className={className} $fontSize={fontSize}>
+      <Label className={className} $fontSize={fontSize} color={color}>
         {label}
-        <InputWrapper>
+        <InputWrapper >
           {type === 'textarea' ? (
             <TextArea
               placeholder={placeholder}
@@ -109,6 +110,7 @@ export default function CustomInput({
               {...register}
               $hasValue={hasValue}
               maxLength={maxLength}
+              color={color}
             />
           )}
           {renderEyeIcon()}
