@@ -193,13 +193,14 @@ const MateriasUI = () => {
                   <Button
                     type="button"
                     onClick={() => handleEditToggle(materia.id)}
+                    style={{backgroundColor:"#042160"}}
                   >
                     Editar
                   </Button>
                   <Button
                     type="button"
                     onClick={() => handleDelete(materia.id)}
-                    style={{ backgroundColor: "red" }}
+                    style={{backgroundColor:"#92212D"}}
                   >
                     Eliminar
                   </Button>

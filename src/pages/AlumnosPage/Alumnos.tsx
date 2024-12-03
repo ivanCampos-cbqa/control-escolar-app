@@ -35,12 +35,11 @@ export default function Alumnos() {
       );
       setContadorMatriculas(maxMatricula + 1);
     }
-
   }, []);
 
   const handleRegistrarOEditarAlumno = () => {
     if (!nombre || !apellido || !password) {
-      alert('LLena todos los campos!');
+      window.confirm('LLena todos los campos!');
       return;
     }
 
@@ -59,12 +58,11 @@ export default function Alumnos() {
             alumno.id === alumnoEditado.id ? alumnoEditado : alumno
           )
         );
-
-        alert('Alumno editado exitosamente:)');
+        window.confirm('Alumno editado exitosamente');
         limpiarFormulario();
       } catch (error) {
         console.error('Error al editar alumno:', error);
-        alert('Error al editar, intenta más tarde.');
+        window.confirm('Error al editar, intenta más tarde.');
       }
     } else {
       const nuevaMatricula = `ALU${contadorMatriculas
@@ -72,7 +70,7 @@ export default function Alumnos() {
         .padStart(3, "0")}`;
 
       const nuevoAlumno = {
-        id: Date.now(),
+        id: 0,
         nombre,
         apellidos: apellido,
         matricula: nuevaMatricula,
@@ -82,8 +80,10 @@ export default function Alumnos() {
 
       callCrearAlumnoApi(nuevoAlumno);
       setAlumnos((prev) => [...prev, nuevoAlumno]);
-      alert('Alumno registrado exitosamente:)');
+      window.confirm('Alumno registrado exitosamente:)');
       limpiarFormulario();
+      const updatedAlumnos = callGetAlumnosApi();
+      setAlumnos(updatedAlumnos);
     }
   }
 
@@ -112,7 +112,7 @@ export default function Alumnos() {
 
   const handleEliminarAlumno = () => {
     if (!alumnoSeleccionado) {
-      alert('No hay alumno seleccionado para eliminar');
+      window.confirm('No hay alumno seleccionado para eliminar');
       return;
     }
 
@@ -121,11 +121,11 @@ export default function Alumnos() {
     try {
       callEliminarAlumnoApi(alumnoId); 
       setAlumnos((prev) => prev.filter((alumno) => alumno.id !== alumnoId)); 
-      alert('Alumno eliminado exitosamente:)');
+      window.confirm('Alumno eliminado exitosamente:)');
       limpiarFormulario(); 
     } catch (error) {
       console.error('Error al eliminar alumno:', error);
-      alert('Error al eliminar, intenta más tarde.');
+      window.confirm('Error al eliminar, intenta más tarde.');
     }
   }
 
@@ -142,7 +142,7 @@ export default function Alumnos() {
       <CustomButton
         title={alumnoSeleccionado ? "Editar Alumno" : "Registrar Alumno"}
         onClick={handleRegistrarOEditarAlumno}
-        style={{ backgroundColor: "#92212D" }}
+        style={{backgroundColor:"#042160"}}
       ></CustomButton>
             {alumnoSeleccionado && (
         <>
@@ -154,7 +154,7 @@ export default function Alumnos() {
           <CustomButton
             title="Cancelar"
             onClick={() => limpiarFormulario()}
-            style={{ backgroundColor: "#92212D" }}
+            style={{backgroundColor:"#042160"}}
           />
         </>
       )}
@@ -178,7 +178,7 @@ export default function Alumnos() {
                 <li >
                   {alumno.nombre} {alumno.apellidos} - Matrícula: {alumno.matricula}
                 </li>
-                <Button style={{width: 'fit-content'}} onClick={()=>handleNavigateCalificaciones(alumno.id)}>Ver Calificaciones</Button>
+                <Button style={{width: 'fit-content', backgroundColor: "#92212D"}} onClick={()=>handleNavigateCalificaciones(alumno.id)}>Ver Calificaciones</Button>
               </div>
             ))
           ) : (

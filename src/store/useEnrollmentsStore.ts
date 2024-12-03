@@ -22,7 +22,7 @@ export const useEnrollmentsStore = zustandCreate<EnrollmentsStore>(() => {
             (inscripcion) => inscripcion.materia.id === materia.id
           );
           if (isAlreadyAssigned) {
-            alert(`La materia "${materia.nombre}" ya está asignada a ${usuario.nombre}.`);
+            window.confirm(`La materia "${materia.nombre}" ya está asignada a ${usuario.nombre}.`);
             return;
           }
           else{
@@ -34,7 +34,7 @@ export const useEnrollmentsStore = zustandCreate<EnrollmentsStore>(() => {
             nuevaInscripcion.id = 1;
           }
           else{
-            alert("El usuario no es alumno")
+            window.confirm("El usuario no es alumno")
             return;
           }
         }
@@ -43,10 +43,10 @@ export const useEnrollmentsStore = zustandCreate<EnrollmentsStore>(() => {
           usuarioExistente.id === usuario.id ? { ...usuarioExistente, ...usuario } : usuarioExistente
         );
         saveToLocalStorage(usuariosStorageKey, usuariosActualizados);
-        alert(`Materia "${materia.nombre}" asignada a ${usuario.nombre} correctamente.`);
+        window.confirm(`Materia "${materia.nombre}" asignada a ${usuario.nombre} correctamente.`);
       }
       else{
-        alert("El usuario no es un alumno");
+        window.confirm("El usuario no es un alumno");
         return;
       }
     },
@@ -63,18 +63,18 @@ export const useEnrollmentsStore = zustandCreate<EnrollmentsStore>(() => {
               usuarioExistente.id === usuario.id ? { ...usuarioExistente, ...usuario } : usuarioExistente
             );
             saveToLocalStorage(usuariosStorageKey, usuariosActualizados);
-            alert("La materia se dió de baja correctamente");
+            window.confirm("La materia se dió de baja correctamente");
           }
           else{
-            alert("El usuario no está inscrito en la materia");
+            window.confirm("El usuario no está inscrito en la materia");
           }
         }
         else{
-          alert("El usuario no tiene materias inscritas");
+          window.confirm("El usuario no tiene materias inscritas");
         }
       }
       else{
-        alert("El usuario no es un alumno");
+        window.confirm("El usuario no es un alumno");
       }
     },
   };

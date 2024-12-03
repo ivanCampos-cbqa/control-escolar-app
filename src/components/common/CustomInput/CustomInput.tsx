@@ -25,6 +25,7 @@ interface CustomInputProps {
   value?: string;
   defaultValue?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  color?: string,
 }
 
 export default function CustomInput({
