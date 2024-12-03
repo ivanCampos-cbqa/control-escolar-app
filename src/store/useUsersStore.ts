@@ -6,6 +6,7 @@ import { usuariosMock } from "@mockData/users";
 export const usuariosStorageKey = "usuariosState";
 
 interface UsuariosStore {
+  [x: string]: any;
   callLoginApi: (matricula: string, password: string) => Usuario | undefined;
   callCrearAlumnoApi: (usuario: Usuario) => void;
   callEditarAlumnoApi: (usuario: Usuario) => void;

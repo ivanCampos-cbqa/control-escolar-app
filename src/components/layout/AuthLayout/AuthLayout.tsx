@@ -46,7 +46,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
 
   return (
     <AuthLayoutWrapper>
-      <NavBar>
+      <NavBar style={{backgroundColor:"#042160"}}>
         {getNavBarItems().map((item) => (
           <p key={item.path} onClick={() => handleNavigation(item.path)}>
             {item.label}

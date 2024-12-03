@@ -91,7 +91,7 @@ const Calificaciones = ({ id, onRefresh, refreshFlag }: { id: number; onRefresh:
         const updatedAlumno = { ...alumno, materias: updatedCalificaciones };
         callEditarAlumnoApi(updatedAlumno);
   
-        alert("Calificación registrada con éxito");
+        window.confirm("Calificación registrada con éxito");
         handleGetCalificaciones();
         setIsEditing(null);
       }
@@ -139,7 +139,7 @@ const Calificaciones = ({ id, onRefresh, refreshFlag }: { id: number; onRefresh:
                   </DetalleCalificacionItem>
                   </ListCalificacionItem>
                   <ListCalificacionItem>
-                  <Button type="submit">Guardar</Button>
+                  <Button style={{backgroundColor:"#042160"}} type="submit">Guardar</Button>
                   <Button
                     type="button"
                     onClick={() => handleEditToggle(calificacion.id)}
@@ -165,13 +165,14 @@ const Calificaciones = ({ id, onRefresh, refreshFlag }: { id: number; onRefresh:
                   <Button
                     type="button"
                     onClick={() => handleEditToggle(calificacion.id)}
+                    style={{backgroundColor:"#042160"}}
                   >
                     Editar
                   </Button>
                   <Button
                     type="button"
                     onClick={() => handleDelete(calificacion.id)}
-                    style={{ backgroundColor: "red" }}
+                    style={{ backgroundColor: "#92212D" }}
                   >
                     Eliminar
                   </Button>

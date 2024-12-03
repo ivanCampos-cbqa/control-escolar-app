@@ -26,6 +26,8 @@ export default function LoginPage() {
     if (!user) {
       setFormErrorMessage("Credenciales invalidas");
       return;
+    }else{
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
     }
 
     updateAuthState({user});
@@ -37,28 +39,30 @@ export default function LoginPage() {
   ): void => login(formConntent.matricula, formConntent.password);
 
   return (
-    <PageWrapper>
-      <h1>Log In</h1>
+    <PageWrapper style={{backgroundColor:"#042160"}}>
+      <h1 style={{color:"white"}}>Inicio de Sesión</h1>
       <FormWrapper onSubmit={handleSubmit(onLoginSubmit)}>
         <CustomInput
           label="Matricula"
           placeholder="Matricula"
+          color="white"
           error={errors.matricula?.message}
           register={register("matricula", {
             ...loginFormValidationSchema.matricula,
           })}
         />
                 <CustomInput
-          label="Password"
+          label="Contraseña"
           type="password"
-          placeholder="Password"
+          placeholder="Contraseña"
+          color="white"
           error={errors.password?.message}
           register={register('password', {
             ...loginFormValidationSchema.password,
           })}
         />
         {formErrorMessage && <LoginError>{formErrorMessage}</LoginError>}
-        <CustomButton title="Log In"/>
+        <CustomButton title="Ingresar" style={{backgroundColor:"#92212D"}}/>
       </FormWrapper>
     </PageWrapper>
   );

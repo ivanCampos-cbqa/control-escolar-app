@@ -10,9 +10,9 @@ export const Container = styled.div`
   gap: ${spacing.small};
 `;
 
-export const Label = styled.label<{ $fontSize?: string }>`
+export const Label = styled.label<{ $fontSize?: string; color?: string }>`
   font-size: ${({ $fontSize }) => ($fontSize ? $fontSize : fontSizes.xs)};
-  color: ${colors.midGray};
+  color: ${({ color }) => color || colors.darkGray};
   font-weight: 500;
 `;
 
@@ -26,6 +26,7 @@ export const InputWrapper = styled.div`
 interface InputProps {
   $hasValue?: boolean;
   disabled?: boolean;
+  color?: string;
 }
 
 const BaseInputStyles = css<InputProps>`
@@ -38,13 +39,12 @@ const BaseInputStyles = css<InputProps>`
     disabled ? colors.gray : 'transparent'};
   border: ${spacing.tiny} solid ${colors.gray};
   border-radius: 0.8rem;
-  color: ${({ $hasValue, disabled }) =>
-    $hasValue && disabled ? colors.midLightGray : colors.darkGray};
+  color: ${({ color }) => color || colors.darkGray};
   font-size: ${fontSizes.sm};
   font-family: Manrope, sans-serif;
 
   &::placeholder {
-    color: ${colors.midLightGray};
+    color: ${({ color }) => color || colors.midLightGray};
     font-size: 1rem;
   }
 `;

@@ -38,7 +38,7 @@ export const useSubjectsStore = zustandCreate<MateriasStore>(() => {
       }
       const nuevasMaterias = [...materias, materia];
       saveToLocalStorage(materiasStorageKey, nuevasMaterias);
-      alert(`Materia ${materia.nombre} creada con éxito`);
+      window.confirm(`Materia ${materia.nombre} creada con éxito`);
     },
 
     callEditarMateriaApi: (materia: Materia): void => {
@@ -47,14 +47,14 @@ export const useSubjectsStore = zustandCreate<MateriasStore>(() => {
         materiaExistente.id === materia.id ? { ...materiaExistente, ...materia } : materiaExistente
       );
       saveToLocalStorage(materiasStorageKey, materiasActualizadas);
-      alert(`Materia ${materia.nombre} editada con éxito`);
+      window.confirm(`Materia ${materia.nombre} editada con éxito`);
     },
 
     callEliminarMateriaApi: (id: number): void => {
       const materias = getFromLocalStorage<Materia[]>(materiasStorageKey) || [];
       const materiasFiltradas = materias.filter((materia) => materia.id !== id);
       saveToLocalStorage(materiasStorageKey, materiasFiltradas);
-      alert("Materia eliminada con éxito");
+      window.confirm("Materia eliminada con éxito");
     },
 
     callGetMateriasApi: (): Materia[] => {

@@ -45,7 +45,7 @@ const Inscripciones = ({ id, onRefresh, refreshFlag }: { id: number; onRefresh: 
       onRefresh();
     }
     else{
-      alert("No se encontró el alumno seleccionado.");
+      window.confirm("No se encontró el alumno seleccionado.");
     }
   }
 
@@ -75,7 +75,7 @@ const Inscripciones = ({ id, onRefresh, refreshFlag }: { id: number; onRefresh: 
               <span>{materia.nombre}</span>
               <Button
                 onClick={() => handleAddMateria(materia)}
-                style={{ backgroundColor: "green" }}
+                style={{ backgroundColor: "#92212D" }}
               >
                 Inscribir alumno
               </Button>

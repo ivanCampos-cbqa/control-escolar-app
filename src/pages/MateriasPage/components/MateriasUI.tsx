@@ -111,7 +111,7 @@ const MateriasUI = () => {
 
   return (
     <Container>
-      <Title>Administrar materias</Title>
+      <Title style={{fontWeight:"normal"}}>Administrar materias</Title>
       <Section>
       <Label>Crear Materia</Label>
         <form onSubmit={handleSubmitCreate(onCreateFormSubmit)}>
@@ -136,7 +136,7 @@ const MateriasUI = () => {
               ...materiaCreateFormValidationSchema.nombreProfesor,
             })}
           />
-          <Button type="submit">Crear</Button>
+          <Button style={{backgroundColor:"#92212D"}} type="submit">Crear</Button>
         </form>
       </Section>
       <Section>
@@ -173,7 +173,7 @@ const MateriasUI = () => {
                       ...materiaCreateFormValidationSchema.nombreProfesor,
                     })}
                   />
-                  <Button type="submit">Guardar</Button>
+                  <Button style={{backgroundColor:"#92212D"}} type="submit">Guardar</Button>
                   <Button
                     type="button"
                     onClick={() => handleEditToggle(materia.id)}
@@ -193,13 +193,14 @@ const MateriasUI = () => {
                   <Button
                     type="button"
                     onClick={() => handleEditToggle(materia.id)}
+                    style={{backgroundColor:"#042160"}}
                   >
                     Editar
                   </Button>
                   <Button
                     type="button"
                     onClick={() => handleDelete(materia.id)}
-                    style={{ backgroundColor: "red" }}
+                    style={{backgroundColor:"#92212D"}}
                   >
                     Eliminar
                   </Button>

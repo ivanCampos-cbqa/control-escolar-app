@@ -31,7 +31,7 @@ export const NavBar = styled.nav`
 
   p:hover {
       cursor: pointer;
-      color: ${colors.green};
+      color: #92212D;
       transition: all 0.2s;
   }
 `
